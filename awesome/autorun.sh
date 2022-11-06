@@ -8,3 +8,4 @@ run() {
 }
 
 run VBoxClient-all
+killall pulseaudio && pulseaudio -D
