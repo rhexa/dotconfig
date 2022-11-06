@@ -48,7 +48,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -229,6 +229,29 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    
+  -- My Key bindings
+    
+    -- Volume Keys
+    awful.key({}, "XF86AudioLowerVolume", function ()
+    awful.util.spawn("pactl set-sink-volume 0 -5%", false) end),
+    awful.key({}, "XF86AudioRaiseVolume", function ()
+    awful.util.spawn("pactl set-sink-volume 0 +5%", false) end),
+    awful.key({}, "XF86AudioMute", function ()
+    awful.util.spawn("pactl set-sink-mute 0 toggle", false) end),
+    
+    -- Media Keys
+    -- Needs playerctl installed.
+    -- See https://wiki.archlinux.org/title/awesome#Media_Controls
+    -- awful.key({}, "XF86AudioPlay", function()
+    -- awful.util.spawn("playerctl play-pause", false) end),
+    -- awful.key({}, "XF86AudioNext", function()
+    -- awful.util.spawn("playerctl next", false) end),
+    -- awful.key({}, "XF86AudioPrev", function()
+    -- awful.util.spawn("playerctl previous", false) end),
+  
+  -- End my key bindings
+    
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
