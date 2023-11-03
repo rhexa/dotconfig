@@ -8,5 +8,5 @@ run() {
 }
 
 run VBoxClient-all
-run setxkbmap -layout fi
+run setxkbmap -layout us
 killall pulseaudio && pulseaudio -D
